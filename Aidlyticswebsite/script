@@ -1,0 +1,317 @@
+// Team Data
+const teamData = [
+  {
+    id: 1,
+    name: "Muhammed Muhsin P H",
+    role: "Co-founder",
+    expertise: "Social Work & Mental Health",
+    bio: "Social work specialist with deep expertise in mental health interventions and community-based programs. Focused on making mental health care accessible to marginalized communities.",
+    photo: "assets/team/muhsin.jpg",
+    linkedin: "https://www.linkedin.com/in/muhammed-muhsin-p-h-a4a717267"
+  },
+  {
+    id: 2,
+    name: "Ismaeel Kpo",
+    role: "Co-founder",
+    expertise: "Livelihoods & Social Entrepreneurship",
+    bio: "Focused on sustainable livelihoods development and empowering social entrepreneurs. Works at the intersection of social impact and economic sustainability.",
+    photo: "assets/team/ismaeel.jpg",
+    linkedin: "https://www.linkedin.com/in/ismaeel-kpo-b04180214"
+  },
+  {
+    id: 3,
+    name: "Yusuf Sabah P M",
+    role: "Co-founder",
+    expertise: "Community Development & Grassroots Initiatives",
+    bio: "Community engagement specialist working directly with grassroots organizations and local changemakers. Passionate about community-led development.",
+    photo: "assets/team/yusuf.jpg",
+    linkedin: "https://www.linkedin.com/in/yusuf-sabah-p-m-5396b9375"
+  },
+  {
+    id: 4,
+    name: "Ali Syed",
+    role: "Co-founder",
+    expertise: "Data Analytics & Social Metrics",
+    bio: "Transforms social impact data into actionable insights, driving evidence-based decision making for nonprofits and grassroots organizations.",
+    photo: "assets/team/ali.jpg",
+    linkedin: "https://www.linkedin.com/in/ali-syed-83803031a"
+  },
+  {
+    id: 5,
+    name: "Mo Khalid Hussain",
+    role: "Co-founder",
+    expertise: "Organizational Development & Community Work",
+    bio: "Community organizer and organizational development practitioner with grassroots experience. Specializes in building resilient, inclusive organizations.",
+    photo: "assets/team/khalid.jpg",
+    linkedin: "https://www.linkedin.com/in/mo-khalid-hussain-845338327"
+  }
+];
+
+// Services Data
+const servicesData = {
+  strategy: [
+    {
+      title: "Programme strategy & design",
+      description: "Roadmaps, theory of change, pilots, scale-up plans, and strategic frameworks tailored to your organizational context."
+    },
+    {
+      title: "Needs & Impact Assessments",
+      description: "Baseline, endline, and stakeholder-informed assessments to understand community needs and measure program effectiveness."
+    }
+  ],
+  me: [
+    {
+      title: "Monitoring & Evaluation frameworks",
+      description: "Customized M&E systems that track progress, learn from implementation, and demonstrate impact to stakeholders."
+    },
+    {
+      title: "Documentation & communication strategy",
+      description: "Story collection, documentation, and communication strategies to amplify your impact and reach stakeholders."
+    }
+  ],
+  fundraising: [
+    {
+      title: "Fundraising strategy & CSR linkages",
+      description: "Strategic fundraising plans, CSR partnership mapping, and donor engagement strategies for sustainable funding."
+    },
+    {
+      title: "Grant writing & donor communication",
+      description: "Compelling grant proposals and donor communication materials that secure funding and build lasting relationships."
+    }
+  ],
+  data: [
+    {
+      title: "Data collection, cleaning, and analysis",
+      description: "Systematic data collection processes, quality assurance, analysis, and visualization for decision-making."
+    },
+    {
+      title: "Data-driven program optimization",
+      description: "Using data insights to continuously improve programs, enhance efficiency, and maximize social impact."
+    }
+  ],
+  org_dev: [
+    {
+      title: "Organisational development",
+      description: "Organizational capacity building, governance strengthening, and systems development for sustainable impact."
+    },
+    {
+      title: "Capacity building support",
+      description: "Training and mentoring for teams to strengthen skills in program implementation and management."
+    }
+  ]
+};
+
+// Training Data
+const trainingData = [
+  {
+    title: "Workshops",
+    description: "Intensive, practical workshops on program design, M&E, fundraising, and strategic planning tailored to your organization's needs."
+  },
+  {
+    title: "Internships",
+    description: "Hands-on internship opportunities for students and early-career professionals to gain real-world experience in social impact work."
+  },
+  {
+    title: "Courses",
+    description: "Comprehensive online and offline courses in social impact consulting, program management, and impact measurement."
+  },
+  {
+    title: "Fellowships",
+    description: "Fellowships for committed changemakers to develop expertise and lead social impact initiatives."
+  }
+];
+
+// Initialize Team Grid
+function initTeamGrid(elementId) {
+  const grid = document.getElementById(elementId);
+  if (!grid) return;
+  
+  grid.innerHTML = '';
+  teamData.forEach(member => {
+    const card = document.createElement('button');
+    card.className = 'team-card';
+    card.innerHTML = `
+      <div class="team-card-image">
+        <img src="${member.photo}" alt="${member.name}" onerror="this.parentElement.textContent='Photo'">
+      </div>
+      <div class="team-card-info">
+        <div class="team-card-name">${member.name}</div>
+        <div class="team-card-role">${member.role}</div>
+      </div>
+    `;
+    card.onclick = () => openTeamModal(member);
+    grid.appendChild(card);
+  });
+}
+
+// Open Team Modal
+function openTeamModal(member) {
+  const modal = document.getElementById('teamModal');
+  document.getElementById('modalImage').src = member.photo;
+  document.getElementById('modalImage').alt = member.name;
+  document.getElementById('modalName').textContent = member.name;
+  document.getElementById('modalRole').textContent = member.role;
+  document.getElementById('modalExpertise').textContent = member.expertise;
+  document.getElementById('modalBio').textContent = member.bio;
+  document.getElementById('modalLinkedIn').href = member.linkedin;
+  
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+// Close Team Modal
+function closeTeamModal() {
+  const modal = document.getElementById('teamModal');
+  modal.classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+// Initialize Tabs
+function initTabs(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  
+  const tabs = container.querySelectorAll('[data-tab]');
+  const panels = container.querySelectorAll('[role="tabpanel"]');
+  
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active class from all tabs and panels
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.style.display = 'none');
+      
+      // Add active class to clicked tab
+      tab.classList.add('active');
+      
+      // Show corresponding panel
+      const panelId = 'panel-' + tab.dataset.tab;
+      const panel = container.querySelector('#' + panelId);
+      if (panel) panel.style.display = 'block';
+    });
+  });
+  
+  // Activate first tab by default
+  if (tabs.length > 0) tabs[0].click();
+}
+
+// Initialize Accordions
+function initAccordions() {
+  const accordions = document.querySelectorAll('.accordion-item');
+  
+  accordions.forEach(item => {
+    const header = item.querySelector('.accordion-header');
+    if (!header) return;
+    
+    header.addEventListener('click', () => {
+      // Close other accordions in same container
+      const container = item.parentElement;
+      if (container) {
+        container.querySelectorAll('.accordion-item.active').forEach(active => {
+          if (active !== item) active.classList.remove('active');
+        });
+      }
+      
+      // Toggle current accordion
+      item.classList.toggle('active');
+    });
+  });
+}
+
+// Initialize Services Accordions
+function initServiceAccordions(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  
+  const headers = container.querySelectorAll('.accordion-header');
+  
+  headers.forEach(header => {
+    header.addEventListener('click', () => {
+      const item = header.parentElement;
+      
+      // Close other accordions in same tab
+      container.querySelectorAll('.accordion-item.active').forEach(active => {
+        if (active !== item) active.classList.remove('active');
+      });
+      
+      item.classList.toggle('active');
+    });
+  });
+}
+
+// Render Services
+function renderServices(tabId, containerId) {
+  const container = document.getElementById(containerId);
+  if (!container || !servicesData[tabId]) return;
+  
+  const services = servicesData[tabId];
+  container.innerHTML = '';
+  
+  services.forEach((service, index) => {
+    const item = document.createElement('div');
+    item.className = 'accordion-item';
+    item.innerHTML = `
+      <button class="accordion-header">${service.title}</button>
+      <div class="accordion-content">
+        <p>${service.description}</p>
+      </div>
+    `;
+    container.appendChild(item);
+  });
+  
+  initServiceAccordions(containerId);
+}
+
+// Render Training
+function renderTraining(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  
+  container.innerHTML = '';
+  
+  trainingData.forEach(program => {
+    const item = document.createElement('div');
+    item.className = 'accordion-item';
+    item.innerHTML = `
+      <button class="accordion-header">${program.title}</button>
+      <div class="accordion-content">
+        <p>${program.description}</p>
+      </div>
+    `;
+    container.appendChild(item);
+  });
+  
+  initAccordions();
+}
+
+// Close modal when clicking outside
+document.addEventListener('click', (e) => {
+  const modal = document.getElementById('teamModal');
+  if (modal && e.target === modal) {
+    closeTeamModal();
+  }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeTeamModal();
+  }
+});
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize team grid if present
+  if (document.getElementById('teamGrid')) {
+    initTeamGrid('teamGrid');
+  }
+  
+  // Initialize services tabs if present
+  if (document.getElementById('servicesContainer')) {
+    initTabs('servicesContainer');
+  }
+  
+  // Initialize training if present
+  if (document.getElementById('trainingAccordion')) {
+    renderTraining('trainingAccordion');
+  }
+});

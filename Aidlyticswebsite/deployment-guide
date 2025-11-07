@@ -1,0 +1,232 @@
+# Aidlytics Website - Deployment Guide
+
+## 📦 Project Files
+
+Your website consists of the following files:
+
+### Core Files
+- `index.html` - Home page
+- `about.html` - About Us page
+- `programs.html` - Core Programs & Services (Interactive Tabs + Accordions)
+- `impact.html` - Reach & Impact page
+- `stories.html` - Impact Stories page
+- `team.html` - Meet Our Founders (Interactive Modal System)
+- `training.html` - Training & Capacity Building (Interactive Accordions)
+- `contact.html` - Contact Us page
+- `styles.css` - Global styling (shared across all pages)
+- `script.js` - JavaScript for interactivity
+
+### Assets Folder (To Create)
+```
+assets/
+├── team/
+│   ├── muhsin.jpg (Muhammed Muhsin P H)
+│   ├── ismaeel.jpg (Ismaeel Kpo)
+│   ├── yusuf.jpg (Yusuf Sabah P M)
+│   ├── ali.jpg (Ali Syed)
+│   └── khalid.jpg (Mo Khalid Hussain)
+└── field/
+    ├── hero.jpg (Hero background)
+    ├── field1.jpg (Community engagement)
+    ├── field2.jpg (Rural development)
+    └── field3.jpg (Elder care)
+```
+
+## 🎨 Design Features
+
+- **Color Theme**: MHI Black & White (Professional, minimalist)
+- **Background**: Deep black (#1A1A1A)
+- **Text**: White (#FFFFFF) and light grey (#D0D0D0)
+- **Interactive Elements**: 
+  - Team member cards with modal popups
+  - Service tabs with expandable accordions
+  - Training program accordions
+  - Smooth animations and transitions
+
+## 📋 Page Structure
+
+### Home Page (index.html)
+- Hero section with field photo background
+- Quick overview of organization
+- Statistics cards
+- Call-to-action buttons
+- Navigation to other pages
+
+### About Us (about.html)
+- Organization mission and vision
+- Why We Exist section
+- Key principles and approach
+
+### Programs (programs.html) ✨ INTERACTIVE
+- Tabbed interface: Strategy | M&E | Fundraising | Data | Org Dev
+- Each tab contains expandable accordion items
+- Smooth expand/collapse animations
+- Click tab to view services in that category
+
+### Impact (impact.html)
+- Statistics and reach information
+- Community impact metrics
+- Stories and testimonials
+
+### Stories (stories.html)
+- Impact stories from field work
+- Case studies from partner organizations
+- Photos and detailed narratives
+
+### Team (team.html) ✨ INTERACTIVE
+- 5 founder cards in responsive grid
+- Click any card to open detailed modal with:
+  - Full photo
+  - Complete bio
+  - Expertise areas
+  - LinkedIn button
+- Keyboard accessible (Tab, Enter, Escape)
+- Mobile responsive
+
+### Training (training.html) ✨ INTERACTIVE
+- 4 training program categories (Workshops, Internships, Courses, Fellowships)
+- Expandable accordion items
+- Program descriptions and eligibility
+- Call to action to contact
+
+### Contact (contact.html)
+- Contact form
+- Email: aidlytics.consultancy@gmail.com
+- Phone: +91-9876543210
+- LinkedIn company page link
+
+## 🚀 How to Deploy
+
+### Option 1: Web Hosting Service (Recommended)
+1. Go to a hosting provider (GoDaddy, Bluehost, Namecheap, etc.)
+2. Purchase a domain (optional)
+3. Upload all files to your web hosting account via FTP:
+   - All HTML files to root directory
+   - styles.css to root directory
+   - script.js to root directory
+   - assets/ folder with all subfolders to root directory
+
+### Option 2: Free Hosting
+- **GitHub Pages**: Upload files to a GitHub repository
+- **Netlify**: Drag and drop entire folder
+- **Vercel**: Upload project folder
+
+### Option 3: Local Testing (Before Deployment)
+1. Create a folder: `aidlytics-website`
+2. Place all HTML files in the root
+3. Create subfolders as shown in Assets Folder section
+4. Open `index.html` in your web browser
+5. All links and interactivity should work locally
+
+## 📸 Adding Your Photos
+
+### Team Photos
+1. Get headshots of each co-founder (recommend 600x600px, JPG)
+2. Rename files to match:
+   - `muhsin.jpg`
+   - `ismaeel.jpg`
+   - `yusuf.jpg`
+   - `ali.jpg`
+   - `khalid.jpg`
+3. Place in `assets/team/` folder
+4. Photos will automatically display in team cards and modals
+
+### Field Photos
+1. Use your Rajasthan field photos:
+   - One for hero background
+   - Three for field work section
+2. Optimize images (under 500KB each for fast loading)
+3. Place in `assets/field/` folder
+4. Update image paths in HTML files if different names
+
+### Image Size Recommendations
+- Team photos: 600x600px (JPG, 100-200KB)
+- Hero background: 1920x1200px or larger (JPG, 200-300KB)
+- Field gallery: 800x600px (JPG, 150-200KB)
+
+## 🔧 Customization
+
+### Change Organization Name
+Search and replace "AIDLYTICS" with your organization name throughout HTML files.
+
+### Change Contact Information
+Update in each HTML file:
+- Email: aidlytics.consultancy@gmail.com
+- Phone: +91-9876543210
+- LinkedIn: https://in.linkedin.com/company/aidlytics-consultancy
+
+### Change Team Members
+Edit `script.js` in the `teamData` array:
+```javascript
+const teamData = [
+  {
+    name: "Name",
+    role: "Role",
+    expertise: "Expertise",
+    bio: "Biography",
+    photo: "assets/team/photo.jpg",
+    linkedin: "https://linkedin.com/in/username"
+  },
+  // Add or modify members here
+];
+```
+
+### Change Services
+Edit `script.js` in the `servicesData` object to add/modify services under each tab.
+
+### Change Training Programs
+Edit `script.js` in the `trainingData` array to add/modify training programs.
+
+## ✅ Testing Before Deployment
+
+1. **Links**: Click all navigation links to ensure they work
+2. **Interactivity**: 
+   - Click team cards to open modals
+   - Click service tabs and accordion items
+   - Click training accordions
+3. **Mobile**: Test on phone/tablet using browser dev tools
+4. **Images**: Ensure all photos display correctly
+5. **Forms**: Test contact form submission
+6. **Cross-browser**: Test in Chrome, Firefox, Safari, Edge
+
+## 📧 Contact Support
+
+If you need help:
+1. Check that all file paths are correct
+2. Ensure assets folder is in the same directory as HTML files
+3. Check browser console (F12) for error messages
+4. Verify image file names match those in HTML/CSS
+
+## 🔐 Security Notes
+
+- Store contact form submissions securely (use service like Formspree or your hosting provider's email service)
+- Back up files regularly
+- Update contact information as needed
+- Monitor for broken links periodically
+
+## 📱 Mobile Optimization
+
+The website is fully responsive:
+- Navigation becomes hamburger menu on mobile
+- Team grid becomes single column
+- Tab interface remains accessible
+- All accordions work smoothly on touch devices
+
+## 🎯 Next Steps
+
+1. Prepare all photos (team headshots + field photos)
+2. Choose hosting provider and domain
+3. Upload files via FTP or web interface
+4. Test all functionality
+5. Share the live URL with your team and partners
+
+## 📞 Support Resources
+
+- HTML Questions: https://www.w3schools.com/html/
+- CSS Questions: https://www.w3schools.com/css/
+- Web Hosting: Research your chosen hosting provider's documentation
+- Domain Registration: Choose your hosting or separate registrar
+
+---
+
+**Your website is ready to deploy!** Follow the deployment instructions above to go live.
